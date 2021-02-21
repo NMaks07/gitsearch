@@ -14,6 +14,7 @@
 		A8B8A83925E28636005ADBE4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A8B8A83725E28636005ADBE4 /* LaunchScreen.storyboard */; };
 		A8B8A84725E288B4005ADBE4 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B8A84625E288B4005ADBE4 /* LoginVC.swift */; };
 		A8B8A84F25E29B02005ADBE4 /* GithubApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B8A84E25E29B02005ADBE4 /* GithubApi.swift */; };
+		A8B8A85425E2C7CD005ADBE4 /* RestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8B8A85325E2C7CD005ADBE4 /* RestError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		A8B8A83A25E28636005ADBE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A8B8A84625E288B4005ADBE4 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		A8B8A84E25E29B02005ADBE4 /* GithubApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubApi.swift; sourceTree = "<group>"; };
+		A8B8A85325E2C7CD005ADBE4 /* RestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				A8B8A83225E28632005ADBE4 /* Main.storyboard */,
 				A8B8A83A25E28636005ADBE4 /* Info.plist */,
 				A8B8A84E25E29B02005ADBE4 /* GithubApi.swift */,
+				A8B8A85325E2C7CD005ADBE4 /* RestError.swift */,
 			);
 			path = gitsearch;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A8B8A82D25E28632005ADBE4 /* AppDelegate.swift in Sources */,
+				A8B8A85425E2C7CD005ADBE4 /* RestError.swift in Sources */,
 				A8B8A84F25E29B02005ADBE4 /* GithubApi.swift in Sources */,
 				A8B8A82F25E28632005ADBE4 /* SceneDelegate.swift in Sources */,
 				A8B8A84725E288B4005ADBE4 /* LoginVC.swift in Sources */,
