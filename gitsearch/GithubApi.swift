@@ -90,10 +90,61 @@ class GithubApi
     }
 
     
-    func search(_ q: String, page: Int, onComplete: @escaping (Result<[Repo], Error>)->Void) {
+    func search(_ q: String, perPage: Int, page: Int, onComplete: @escaping (Result<SearchResult, Error>)->Void) {
         //GET /search/repositories
+        
+        var urlComponents = URLComponents(string: "https://github.com/search/repositories")!
+        urlComponents.queryItems = [
+            URLQueryItem(name: "q", value: q),
+            URLQueryItem(name: "per_page", value: String(perPage)),
+            URLQueryItem(name: "page", value: String(page))
+        ]
+        
+        var rq = URLRequest(url: urlComponents.url!)
+        rq.httpMethod = "GET"
+        rq.addValue("application/vnd.github.v3+json", forHTTPHeaderField: "Accept")
+        rq.timeoutInterval = 30
+        
+        let task = URLSession.shared.dataTask(with: rq) { (data, urlResponse, error) in
+            guard error == nil  else {
+                onComplete(.failure(error!))
+                return
+            }
+            
+            guard data != nil else {
+                onComplete(.failure(RestError.invalidData))
+                return
+            }
+            
+            guard let httpResponse = urlResponse as? HTTPURLResponse else {
+                onComplete(.failure(RestError.invalidResponse))
+                return
+            }
+            
+            switch httpResponse.statusCode {
+            case 200:
+                do {
+                    
+                    let dataFromServer =  try JSONDecoder().decode(SearchResult.self, from: data!)
+                    onComplete(.success(dataFromServer))
+                } catch {
+                    let responseStr = String(data: data!, encoding: .utf8) ?? ""
+                    let err = RestError.jsonParsingFailure(objAsString: responseStr, httpStatus: httpResponse.statusCode, path: rq.url?.path)
+                    onComplete(.failure(err))
+                    
+                }
+            
+            default:
+                let err = RestError.custom(message: "запрос не удался, код статуса ответа: \(httpResponse.statusCode)")
+                print(String(data: data!, encoding: .utf8))
+                print(rq.url?.absoluteURL)
+                onComplete(.failure(err))
+            }
+            
+        }
+        
+        task.resume()
 
-        //return Result(catching: <#T##() throws -> _#>)
     }
     
 }
@@ -112,4 +163,9 @@ class SearchResult: Codable {
     var total_count: Int
     var incomplete_results: Bool
     var items: [Repo]
+    
+    var first: String!
+    var prev: String!
+    var next: String!
+    var last: String!
 }
