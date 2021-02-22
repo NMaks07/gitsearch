@@ -93,7 +93,7 @@ class GithubApi
     func search(_ q: String, perPage: Int, page: Int, onComplete: @escaping (Result<SearchResult, Error>)->Void) {
         //GET /search/repositories
         
-        var urlComponents = URLComponents(string: "https://github.com/search/repositories")!
+        var urlComponents = URLComponents(string: "https://api.github.com/search/repositories")!
         urlComponents.queryItems = [
             URLQueryItem(name: "q", value: q),
             URLQueryItem(name: "per_page", value: String(perPage)),
@@ -150,22 +150,22 @@ class GithubApi
 }
 
 struct Owner: Codable {
-    var avatar_url: String
+    var avatar_url: String?
 }
 
 struct Repo: Codable {
-    var full_name: String
-    var owner: Owner
-    var language: String
+    var full_name: String?
+    var owner: Owner?
+    var language: String?
 }
 
 class SearchResult: Codable {
-    var total_count: Int
-    var incomplete_results: Bool
-    var items: [Repo]
+    var total_count: Int?
+    var incomplete_results: Bool?
+    var items: [Repo]?
     
-    var first: String!
-    var prev: String!
-    var next: String!
-    var last: String!
+    var first: String?
+    var prev: String?
+    var next: String?
+    var last: String?
 }

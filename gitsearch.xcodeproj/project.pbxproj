@@ -68,7 +68,6 @@
 				A8B8A84425E28804005ADBE4 /* login */,
 				A8B8A84225E287CD005ADBE4 /* supporting files */,
 				A8B8A83225E28632005ADBE4 /* Main.storyboard */,
-				A8B8A85625E41738005ADBE4 /* SearchVC.swift */,
 				A8B8A83A25E28636005ADBE4 /* Info.plist */,
 				A8B8A84E25E29B02005ADBE4 /* GithubApi.swift */,
 				A8B8A85325E2C7CD005ADBE4 /* RestError.swift */,
@@ -98,6 +97,7 @@
 		A8B8A84525E28822005ADBE4 /* search */ = {
 			isa = PBXGroup;
 			children = (
+				A8B8A85625E41738005ADBE4 /* SearchVC.swift */,
 			);
 			path = search;
 			sourceTree = "<group>";

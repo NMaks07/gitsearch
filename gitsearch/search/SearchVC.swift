@@ -80,15 +80,15 @@ class SearchVC: UIViewController {
 
 extension SearchVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results?.items.count ?? 0
+        return results?.items?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        let imgUrl = URL(string: results.items[indexPath.row].owner.avatar_url)
+        let imgUrl = URL(string: results?.items?[indexPath.row].owner?.avatar_url ?? "")
         cell.imageView?.kf.setImage(with: imgUrl)
-        cell.textLabel?.text = results.items[indexPath.row].full_name
-        cell.detailTextLabel?.text = results.items[indexPath.row].language
+        cell.textLabel?.text = results?.items?[indexPath.row].full_name ?? ""
+        cell.detailTextLabel?.text = results?.items?[indexPath.row].language ?? ""
         return cell
     }
 }

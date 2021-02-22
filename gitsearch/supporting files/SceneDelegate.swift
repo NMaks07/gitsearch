@@ -49,12 +49,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
-        if let urlContext = URLContexts.first {
-            let githubApi = GithubApi()
-            if let code = githubApi.getCode(urlContext.url) {
-                print("code=", code)
-                // @todo self.presentedController.dismiss(animation: true)
-            }
+        if let urlContext = URLContexts.first,
+           let code = GithubApi().getCode(urlContext.url),
+           let loginVC = window?.rootViewController as? LoginVC {
+            loginVC.handleAuth(code: code)
         }
     }
     
