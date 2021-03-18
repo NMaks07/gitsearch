@@ -61,14 +61,18 @@ class SearchVC: UIViewController {
             switch result {
             case .success(let resultFromGitServer):
                 self?.results = resultFromGitServer
-                
+
+                if let next = self?.results?.next {
+                    print("link next", next)
+                }
+
                 DispatchQueue.main.async {
                     self?.listTbl.reloadData()
                 }
                 
             case .failure(let err):
                 DispatchQueue.main.async {
-                    let av = UIAlertController(title: "ошибка", message: err.localizedDescription, preferredStyle: .alert)
+                    let av = UIAlertController(title: NSLocalizedString("errorTitle", comment: "заголовок ошибка в информационных окнах"), message: err.localizedDescription, preferredStyle: .alert)
                     av.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                     self?.present(av, animated: true, completion: nil)
 

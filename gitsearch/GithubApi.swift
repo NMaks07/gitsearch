@@ -126,6 +126,20 @@ class GithubApi
                 do {
                     
                     let dataFromServer =  try JSONDecoder().decode(SearchResult.self, from: data!)
+                    
+                    if let link = httpResponse.findLink(relation: "first") {
+                        dataFromServer.first = link.uri
+                    }
+                    if let link = httpResponse.findLink(relation: "prev") {
+                        dataFromServer.prev = link.uri
+                    }
+                    if let link = httpResponse.findLink(relation: "next") {
+                        dataFromServer.next = link.uri
+                    }
+                    if let link = httpResponse.findLink(relation: "last") {
+                        dataFromServer.last = link.uri
+                    }
+
                     onComplete(.success(dataFromServer))
                 } catch {
                     let responseStr = String(data: data!, encoding: .utf8) ?? ""

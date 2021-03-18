@@ -1,0 +1,15 @@
+
+/* Class = "UIButton"; normalTitle = "След."; ObjectID = "7SV-cQ-4Vh"; */
+"7SV-cQ-4Vh.normalTitle" = "След.";
+
+/* Class = "UIButton"; normalTitle = "Login with Github"; ObjectID = "7ph-xU-szH"; */
+"7ph-xU-szH.normalTitle" = "вход с помощью Github";
+
+/* Class = "UIButton"; normalTitle = "Послед."; ObjectID = "DRb-Ja-O91"; */
+"DRb-Ja-O91.normalTitle" = "Послед.";
+
+/* Class = "UIButton"; normalTitle = "Пред."; ObjectID = "F4L-Ov-DNf"; */
+"F4L-Ov-DNf.normalTitle" = "Пред.";
+
+/* Class = "UIButton"; normalTitle = "Перв."; ObjectID = "cKj-Up-tSf"; */
+"cKj-Up-tSf.normalTitle" = "Перв.";
